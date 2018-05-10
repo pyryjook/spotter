@@ -10,7 +10,7 @@ def get_top_songs(username):
     songs_data = get_songs_data(username)
 
     songs = [{
-        'artists': ', '.join([artist.get('name') for artist in song.get('artists')]),
+        'artists': [artist.get('name') for artist in song.get('artists')],
         'name': song.get('name')
     } for song in songs_data['items']]
 

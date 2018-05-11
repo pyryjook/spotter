@@ -9,7 +9,6 @@ from containers.MainMenu import MainMenu
 
 class App(ConnectedComponent):
     def render_component(self, props):
-        print(props)
         return Overlay(
             top_w=MainMenu(store=props['store']),
             bottom_w=SolidFill(u'\N{DARK SHADE}'),

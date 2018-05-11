@@ -7,21 +7,27 @@ class MainMenu(Component):
     prop_types = {
         'choices': list,
         'title': str,
-        'exit_app': callable
+        'exit_app': callable,
+        'choose_item': callable
     }
+
+    def component_will_mount(self, props):
+        self.exit_app = props['exit_app']
+        self.choose_item = props['choose_item']
+
     def menu(self, choices):
         body = [Divider()]
         for c in choices:
-            button = Button(c)
-            connect_signal(button, 'click', self.chosen_item, c)
+            button = Button(c[0], None, c[1])
+            connect_signal(button, 'click', self.chosen_item, c[1])
             body.append(AttrMap(button, None, focus_map='reversed'))
         return ListBox(SimpleFocusListWalker(body))
 
     def chosen_item(self, button, choice):
-        print(choice, button)
-
-    def back_to_main_menu(self, button):
-        return 1
+        if choice == 'exit':
+            self.exit_app()
+        else:
+            self.choose_item(choice)
 
     def render_component(self, props):
         title_elem = BigText(props['title'],  font.HalfBlock5x4Font())

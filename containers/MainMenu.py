@@ -4,27 +4,25 @@ from urwid_pydux import ConnectedComponent
 from actions import show_top_songs
 from components.MainMenu import MainMenu as MainMenuComponent
 
-choices = u'Chapman Cleese Gilliam Idle Jones Palin'.split()
 
 class MainMenu(ConnectedComponent):
-    def menu(self, title, choices):
-        return 1
+    def map_state_to_props(self, state, own_props):
+        return {
+            'menu': state['menu']
+        }
 
-    def choose_item(self, button, choice):
-        return 1
+    def choose_item(self, choose_view):
+        print(choose_view)
 
-    def exit_app(self, button):
-        return ExitMainLoop()
+    def exit_app(self):
+        raise ExitMainLoop()
 
     def render_component(self, props):
-        choices = [
-            "boo",
-            "hoo",
-            "exit"
-        ]
+        choices = props['menu']['items']
 
         return MainMenuComponent(
             title = "Spotter",
             choices = choices,
-            exit_app = self.exit_app
+            exit_app = self.exit_app,
+            choose_item = self.choose_item
         )

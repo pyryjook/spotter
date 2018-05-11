@@ -1,4 +1,8 @@
 from constants.actions import SHOW_MAIN_MENU, SHOW_TOP_SONGS, UPDATE_LIST_CONTENT
+from repository import get_top_songs as get_top_songs_from_api
+
+def _map_songs(songs):
+    return [ ", ".join(song['artists'])+" - "+song['name'] for song in songs]
 
 def show_main_menu():
     return { 'type': SHOW_MAIN_MENU }
@@ -6,12 +10,20 @@ def show_main_menu():
 def show_top_songs():
     return { 'type': SHOW_MAIN_MENU }
 
-def render_main_menu():
+def get_main_menu():
     return {
         'type': UPDATE_LIST_CONTENT,
         'title': None,
         'items': [
             ('Most listened songs', 'top_songs'),
-            ('Exit Spotter ->', 'exit')
+            ('Exit Spotter... Bye!', 'exit')
         ]
     }
+
+def get_top_songs():
+    return {
+        'type': UPDATE_LIST_CONTENT,
+        'title': None,
+        'items': [('boo', 'boo')]
+    }
+

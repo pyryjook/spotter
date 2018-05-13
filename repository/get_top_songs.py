@@ -11,7 +11,8 @@ def get_top_songs(username):
 
     songs = [{
         'artists': [artist.get('name') for artist in song.get('artists')],
-        'name': song.get('name')
+        'name': song.get('name'),
+        'song_spotify_uri': song.get('uri')
     } for song in songs_data['items']]
 
     return list(enumerate(songs))

@@ -1,7 +1,7 @@
 from urwid import ExitMainLoop
 from urwid_pydux import ConnectedComponent
 
-from actions import show_top_songs, show_top_songs
+from actions import show_top_songs, show_top_songs, get_top_songs
 from components.MainMenu import MainMenu as MainMenuComponent
 
 class MainMenu(ConnectedComponent):
@@ -11,8 +11,10 @@ class MainMenu(ConnectedComponent):
         }
 
     def choose_item(self, choose_view):
+        print('choose_item')
         if choose_view == 'top_songs':
-            self.store['dispatch'](show_top_songs())   
+            self.store['dispatch'](show_top_songs())  
+            self.store['dispatch'](get_top_songs())    
 
     def exit_app(self):
         raise ExitMainLoop()

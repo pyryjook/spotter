@@ -3,6 +3,7 @@ from constants.views import MAIN_MENU_VIEW, TOP_SONGS_VIEW
 from pydux.extend import extend
 
 def menus(state=None, action=None):
+    print('menus action: ')
     print(action, UPDATE_LIST_CONTENT)
     if action['type'] == UPDATE_LIST_CONTENT:
         print('oh yes')

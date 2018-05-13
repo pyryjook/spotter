@@ -1,8 +1,0 @@
-{'type': '@@redux/INIT'} UPDATE_LIST_CONTENT
-{'type': '@@redux/PROBE_UNKNOWN_ACTION_D.E.u.g.j.H.h.N.u.j.C.J.r.a.i.k.R.I.u.o'} UPDATE_LIST_CONTENT
-{'type': '@@redux/INIT'} UPDATE_LIST_CONTENT
-{'type': 'UPDATE_LIST_CONTENT', 'title': None, 'items': [('Most listened songs', 'top_songs'), ('Exit Spotter... Bye!', 'exit')]} UPDATE_LIST_CONTENT
-oh yes
-[('Most listened songs', 'top_songs'), ('Exit Spotter... Bye!', 'exit')]
-{'type': 'SHOW_MAIN_MENU'} UPDATE_LIST_CONTENT
-[]

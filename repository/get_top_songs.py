@@ -1,9 +1,8 @@
-from functools import reduce
-import operator
 from .auth import get_session
+from .scopes import USER_TOP_READ
 
 def get_songs_data(username):
-    sp = get_session(username)
+    sp = get_session()
     return sp.current_user_top_tracks(limit=20, offset=0, time_range='medium_term')
 
 def get_top_songs(username):

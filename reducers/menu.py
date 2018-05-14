@@ -1,18 +1,16 @@
 from constants.actions import UPDATE_LIST_CONTENT
-from constants.views import MAIN_MENU_VIEW, TOP_SONGS_VIEW
 from pydux.extend import extend
 
 def menus(state=None, action=None):
-    print('menus action: ')
-    print(action, UPDATE_LIST_CONTENT)
     if action['type'] == UPDATE_LIST_CONTENT:
-        print('oh yes')
         return {
             'title': action['title'],
-            'items': action['items']
+            'items': action['items'],
+            'go_to_prev': action['go_to_prev']
         }
     else:
         return {
             'title': None,
-            'items': []
+            'items': [],
+            'go_to_prev': ('', '')
         }

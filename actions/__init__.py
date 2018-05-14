@@ -1,5 +1,5 @@
-from constants.actions import UPDATE_LIST_CONTENT
-from repository import get_top_songs as get_top_songs_from_api
+from constants.actions import UPDATE_LIST_CONTENT, GET_CURRENT_PLAYING_SONG
+from repository import get_top_songs as get_top_songs_from_api, get_current_song as get_current_song_from_api
 
 def get_main_menu():
     return {
@@ -23,5 +23,14 @@ def get_top_songs():
         'title': None,
         'go_to_prev': ('Back to Main Menu', 'main_menu'),
         'items': mapped_songs
+    }
+
+def get_current_song():
+    def map_song_name(song):
+        return ", ".join(song.get('artists')) + " - " + song.get('name')
+
+    return {
+        'type': GET_CURRENT_PLAYING_SONG,
+        'current_song': map_song_name(get_current_song_from_api())
     }
 

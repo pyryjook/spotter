@@ -3,16 +3,17 @@ import sys
 from repository import scopes
 from repository.auth import authorize_session
 # Print debug to file that can be followed with $ tail
-sys.stdout = open('stdout', 'w')
+# sys.stdout = open('stdout', 'w')
 from pydux.create_store import create_store
 from urwid_pydux import subscribe_urwid_redraw
 
 from components.App import App
 from reducers import spotter_app
-from actions import get_main_menu
+from actions import get_main_menu, get_current_song
 
 def open_app():
     store = create_store(spotter_app)
+    store.dispatch(get_current_song())
     store.dispatch(get_main_menu())
     root = App(store=store)
     loop = urwid.MainLoop(root)

@@ -12,12 +12,20 @@ def get_current_song():
     sp = get_session()
     current_track = sp.current_playback()
 
-    song = get_song_info(current_track['item']['id'])
+    song = None
 
-    song = {
-        'artists': [artist.get('name') for artist in song.get('artists')],
-        'name': song.get('name'),
-        'song_spotify_uri': song.get('uri')
-    }
+    if current_track:
+        song = get_song_info(current_track['item']['id'])
 
+        song = {
+            'artists': [artist.get('name') for artist in song.get('artists')],
+            'name': song.get('name'),
+            'song_spotify_uri': song.get('uri')
+        }
+    else:
+        song = {
+            'artists': ['Choose a song'],
+            'name': 'and chill',
+            'song_spotify_uri': None
+        }
     return song

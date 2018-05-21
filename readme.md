@@ -11,6 +11,7 @@ Currently supports showing and playing the users most listened songs.
 ## Usage
 - `$ cp configs-example.ini configs.ini`
 - Fill in the blanks in the configs.ini file
+- `$ virtualenv venv`
 - `$ source venv/bin/activate`
 - `$ pip install -r requirements.txt`
 - `$ python spotify.py`

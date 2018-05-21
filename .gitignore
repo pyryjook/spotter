@@ -103,3 +103,4 @@ ENV/
 .vscode
 .cache-*
 configs.ini
+stdout
